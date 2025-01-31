@@ -1,7 +1,7 @@
 # Konsep-CPP
 Disini adalah repo untuk menjelaskan konsep konsep dasar c+++ yang sulit dipahami pemmula atau bahkan yang sudah lupa karena sudah lama tidak di implementasikan (misalnya sedang nyasar ke web prog)
 
-# Pointer di C++
+# 1. Pointer di C++
 
 Pointer adalah variabel yang menyimpan alamat memori dari variabel lain. Pointer memungkinkan kita untuk bekerja langsung dengan alamat memori, memberikan fleksibilitas dan efisiensi dalam pemrograman, terutama ketika berhubungan dengan alokasi memori dinamis atau manipulasi data besar.
 Deklarasi Pointer
@@ -132,3 +132,6 @@ Kesimpulan:
     Pointer memungkinkan kita untuk mengakses dan memanipulasi memori secara langsung.
     Pointer memberikan fleksibilitas dalam penggunaan alokasi memori dinamis dan pengelolaan data besar.
     Konsep seperti pointer ke pointer, pointer null, dan pointer dengan array sangat penting untuk dikuasai.
+
+
+# 2. 
