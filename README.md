@@ -1,5 +1,5 @@
 # Konsep-CPP
-Disini adalah repo untuk menjelaskan konsep konsep dasar c+++ yang sulit dipahami pemmula atau bahkan yang sudah lupa karena sudah lama tidak di implementasikan (misalnya sedang nyasar ke web prog)
+Disini adalah repo untuk menjelaskan konsep konsep dasar c+++ yang sulit dipahami pemula atau bahkan yang sudah lupa karena sudah lama tidak di implementasikan (misalnya sedang nyasar ke web prog)
 
 # 1. Pointer di C++
 
@@ -134,4 +134,73 @@ Kesimpulan:
     Konsep seperti pointer ke pointer, pointer null, dan pointer dengan array sangat penting untuk dikuasai.
 
 
-# 2. 
+# 2. 📌 Pointer vs Reference di C++
+Dengan melihat alamat memori dan nilainya, kita bisa memahami bagaimana data diproses saat dilewatkan ke fungsi.
+```cpp
+#include <iostream>
+using namespace std;
+
+void fungsi(int nilaiBiasa, int *nilaiPointer, int &nilaiReference) {
+    cout << "Nilai biasa      : " << nilaiBiasa << endl;
+    cout << "&Nilai biasa     : " << &nilaiBiasa << endl << endl;
+
+    cout << "Nilai pointer    : " << nilaiPointer << endl;
+    cout << "&Nilai pointer   : " << &nilaiPointer << endl;
+    cout << "*Nilai pointer   : " << *nilaiPointer << endl << endl;
+
+    cout << "Nilai reference  : " << nilaiReference << endl;
+    cout << "&Nilai reference : " << &nilaiReference << endl;
+    cout << "*Nilai reference : " << *nilaiPointer << endl << endl;
+}
+
+int main() {
+    int nilai = 5;
+
+    cout << "Nilai      : " << nilai << endl;
+    cout << "&Nilai     : " << &nilai << endl << endl;
+
+    fungsi(nilai, &nilai, nilai);
+
+    return 0;
+}
+```
+
+🔍 Penjelasan
+
+1️⃣ Nilai Biasa (pass by value)<br>
+-Saat kita memanggil fungsi dengan nilai biasa, C++ membuat salinan baru dari variabel.<br>
+-Perubahan dalam fungsi tidak akan mempengaruhi nilai asli di luar fungsi.<br>
+-Oleh karena itu, alamat memori berbeda dari variabel aslinya.<br>
+
+2️⃣ Pointer (pass by pointer)<br>
+-Pointer menyimpan alamat memori variabel yang dilewatkan.<br>
+-Dengan menggunakan *namaPointer, kita bisa mengakses nilai dari alamat tersebut.<br>
+-Perubahan pada *nilaiPointer akan mempengaruhi nilai asli.<br>
+-Namun, &nilaiPointer dalam fungsi akan berbeda dari &nilai di main() karena pointer itu sendiri juga merupakan variabel baru yang menyimpan alamat.<br>
+
+3️⃣ Reference (pass by reference)<br>
+-Reference adalah alias dari variabel asli.<br>
+-Tidak seperti pointer, reference tidak memiliki alamat sendiri; referensi menggunakan alamat yang sama dengan variabel asli.<br>
+-Perubahan pada nilaiReference langsung mengubah nilai asli.<br>
+
+📊 Output Program (Contoh)
+```cpp
+Nilai      : 5
+&Nilai     : 0x61ff08
+
+
+Nilai biasa      : 5
+&Nilai biasa     : 0x61fef4  <-- Alamatnya berbeda dari variabel asli karena salinan baru
+
+Nilai pointer    : 0x61ff08  <-- Menunjuk ke alamat variabel asli
+&Nilai pointer   : 0x61fef0  <-- Alamat dari pointer itu sendiri
+*Nilai pointer   : 5         <-- Mengambil nilai dari alamat yang ditunjuk
+
+Nilai reference  : 5
+&Nilai reference : 0x61ff08  <-- Sama dengan alamat variabel asli
+*Nilai reference : 5
+```
+
+🚀 Catatan Tambahan
+Gunakan reference (&) jika ingin mengubah nilai tanpa menyalin data.<br>
+Gunakan pointer (*) jika butuh fleksibilitas dalam manajemen memori.<br>
